@@ -7,7 +7,7 @@
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:#222;font:16px/1.6 -apple-system,"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif}
 header{background:var(--navy);color:#fff;padding:14px 16px}header h1{margin:0;font-size:20px}header p{margin:2px 0 0;font-size:14px;opacity:.9}
 .wrap{max-width:780px;margin:0 auto;padding:0 12px 40px}
-#map{height:420px;border-radius:12px;margin:12px 0;border:1px solid var(--line)}
+#map{height:540px;border-radius:12px;margin:12px 0;border:1px solid var(--line)}
 h2{font-size:18px;color:var(--navy);margin:20px 0 6px}
 table{width:100%;border-collapse:collapse;background:#fff;font-size:14px}th,td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}th{background:#ece8dc}
 .pin{background:var(--navy);color:#fff;border:2px solid #fff;border-radius:50%;width:24px;height:24px;line-height:20px;font-size:13px;text-align:center;font-weight:700;box-shadow:0 1px 4px #0006}
@@ -17,17 +17,18 @@ table{width:100%;border-collapse:collapse;background:#fff;font-size:14px}th,td{b
 a{color:var(--navy)}
 .far{background:#ffe9e5}
 .pin.shop{background:#8e44ad}.pin.free{background:#27ae60}
-.legend span{display:inline-block;margin-right:12px;font-size:14px}.legend i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:4px;vertical-align:-1px}
+.ctl label{display:inline-block;margin:0 12px 4px 0;font-size:14px}.legend span{display:inline-block;margin-right:12px;font-size:14px}.legend i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:4px;vertical-align:-1px}
 </style></head><body>
 <header><h1>基隆一日遊｜路線地圖</h1><p>各景點相對位置與步行距離（步行距離與時間為 Google 地圖查詢結果）</p></header>
 <div class="wrap">
 <div class="key">最長的兩段：陽明館→午餐 約 1.0 km（14 分）、麗都→愛一路 700 m（10 分）。午餐店和麗都只隔 170 m。回程順路買伴手禮。</div>
-<div class="legend"><span><i style="background:#1d3557"></i>主行程</span><span><i style="background:#c0392b"></i>午餐</span><span><i style="background:#8e44ad"></i>伴手禮</span><span><i style="background:#27ae60"></i>自由行景點</span></div>
+<div class="ctl"><label><input type="checkbox" id="cA" checked> 路線A（湖南小館）</label><label><input type="checkbox" id="cB" checked> 路線B（廟口午餐）</label><label><input type="checkbox" id="cS" checked> 伴手禮</label><label><input type="checkbox" id="cF" checked> 自由行</label></div>
+<div class="legend"><span><i style="background:#1d3557"></i>主行程</span><span><i style="background:#c0392b"></i>路線A（紅線）</span><span><i style="background:#2471a3"></i>路線B（藍線）</span><span><i style="background:#8e44ad"></i>伴手禮</span><span><i style="background:#27ae60"></i>自由行景點</span></div>
 <div id="map"></div>
 <table><tr><th>編號</th><th>地點</th></tr>
-<tr><td>1</td><td>基隆車站</td></tr><tr><td>2</td><td>海洋廣場</td></tr><tr><td>3</td><td>陽明海洋文化藝術館</td></tr><tr><td>4</td><td>湖南小館（午餐，待改）</td></tr><tr><td>5</td><td>麗都蝶客花園</td></tr><tr><td>6</td><td>新新牛軋糖（愛一路）</td></tr><tr><td>7</td><td>李鵠餅店（仁三路）</td></tr>
-<tr><td>A</td><td>信二防空洞（自由行）</td></tr><tr><td>B</td><td>基隆塔（自由行）</td></tr><tr><td>C</td><td>廟口夜市一帶（自由行）</td></tr></table>
-<p class="note">點地圖上的標記可看說明和介紹連結。港口不能直接穿過，所以<b>距離全部用 Google 步行路線</b>（沿港口繞行），不是直線。地圖上的線是依道路畫的示意，載入失敗時就只顯示標記。①車站、廟口位置為示意。</p>
+<tr><td>1</td><td>基隆車站</td></tr><tr><td>2</td><td>海洋廣場</td></tr><tr><td>3</td><td>陽明海洋文化藝術館</td></tr><tr><td>4</td><td>湖南小館（路線A午餐）</td></tr><tr><td>5</td><td>麗都蝶客花園</td></tr><tr><td>6</td><td>新新牛軋糖（愛一路）</td></tr><tr><td>7</td><td>李鵠餅店（仁三路）</td></tr>
+<tr><td>A</td><td>信二防空洞（自由行）</td></tr><tr><td>B</td><td>基隆塔（自由行）</td></tr><tr><td>C</td><td>廟口夜市一帶（路線B午餐區；其餘為自由行）</td></tr></table>
+<p class="note"><b>路線A</b>：車站→海洋廣場→陽明館→湖南小館→麗都→愛一路→車站。<b>路線B</b>：車站→海洋廣場→陽明館→廟口一帶午餐→愛一路→車站，午餐後可選 綠色虛線 廟口→信二防空洞→基隆塔。上方勾選可分開看。<br>點地圖上的標記可看說明和介紹連結。港口不能直接穿過，所以<b>距離全部用 Google 步行路線</b>（沿港口繞行），不是直線。地圖上的線是依道路畫的示意，載入失敗時就只顯示標記。①車站、廟口位置為示意。</p>
 
 <h2>每一段多遠</h2>
 <table>
@@ -85,23 +86,27 @@ var F=[
 try{
  var map=L.map('map',{scrollWheelZoom:false});
  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(map);
- function pin(p,cls,label){
+ var G={base:L.layerGroup().addTo(map),A:L.layerGroup().addTo(map),B:L.layerGroup().addTo(map),S:L.layerGroup().addTo(map),F:L.layerGroup().addTo(map)};
+ function pin(p,cls,label,g){
   L.marker(p.ll,{icon:L.divIcon({className:'',html:'<div class="pin '+cls+'">'+label+'</div>',iconSize:[24,24],iconAnchor:[12,12]})})
-   .addTo(map).bindPopup('<b>'+p.name+'</b><br>'+p.t+(p.u?'<br><a href="'+p.u+'" target="_blank" rel="noopener">景點介紹 ›</a>':''));
-  
+   .addTo(g).bindPopup('<b>'+p.name+'</b><br>'+p.t+(p.u?'<br><a href="'+p.u+'" target="_blank" rel="noopener">景點介紹 ›</a>':''));
  }
- P.forEach(function(p){pin(p,p.lunch?'lunch':(p.shop?'shop':''),p.n)});
- F.forEach(function(p,i){pin(p,'free','ABC'.charAt(i))});
+ P.forEach(function(p){pin(p,p.lunch?'lunch':(p.shop?'shop':''),p.n,p.n<=3?G.base:(p.shop?G.S:G.A))});
+ F.forEach(function(p,i){pin(p,'free','ABC'.charAt(i),G.F)});
+ var C=F[2],XA=F[0],XB=F[1];
  var all=P.concat(F).map(function(p){return p.ll});
- map.fitBounds(L.latLngBounds(all).pad(0.2));
- // 依道路畫路線（OSRM 公開服務），失敗就略過
- var legs=[[0,1],[1,2],[2,3],[3,4],[4,5],[5,0]];
- legs.forEach(function(g){
-  var a=P[g[0]].ll,b=P[g[1]].ll;
+ map.fitBounds(L.latLngBounds(all).pad(0.15));
+ function route(a,b,color,g,dash){
   fetch('https://router.project-osrm.org/route/v1/foot/'+a[1]+','+a[0]+';'+b[1]+','+b[0]+'?overview=full&geometries=geojson')
    .then(function(r){return r.json()}).then(function(d){
-    if(d&&d.routes&&d.routes[0]){L.geoJSON(d.routes[0].geometry,{style:{color:'#c0392b',weight:4,opacity:.75}}).addTo(map)}
+    if(d&&d.routes&&d.routes[0]){L.geoJSON(d.routes[0].geometry,{style:{color:color,weight:4,opacity:.8,dashArray:dash||null}}).addTo(g)}
    }).catch(function(){});
- });
+ }
+ route(P[0].ll,P[1].ll,'#1d3557',G.base);route(P[1].ll,P[2].ll,'#1d3557',G.base);route(P[5].ll,P[0].ll,'#1d3557',G.base);
+ route(P[2].ll,P[3].ll,'#c0392b',G.A);route(P[3].ll,P[4].ll,'#c0392b',G.A);route(P[4].ll,P[5].ll,'#c0392b',G.A);
+ route(P[2].ll,C.ll,'#2471a3',G.B);route(C.ll,P[5].ll,'#2471a3',G.B);
+ route(C.ll,XA.ll,'#27ae60',G.F,'6 6');route(XA.ll,XB.ll,'#27ae60',G.F,'6 6');
+ [['cA','A'],['cB','B'],['cS','S'],['cF','F']].forEach(function(x){
+  document.getElementById(x[0]).onchange=function(){this.checked?G[x[1]].addTo(map):map.removeLayer(G[x[1]])}});
 }catch(e){document.getElementById('map').innerHTML='<p style="padding:12px">地圖無法載入，請看下方表格或用「在 Google 地圖開啟」。</p>'}
 </script></body></html>
