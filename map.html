@@ -63,24 +63,24 @@ a{color:var(--navy)}
 <script>
 var P=[
  {n:1,name:'基隆車站',t:'8:45 集合／14:45 集合、14:54 回程',ll:[25.1314,121.7399]},
- {n:2,name:'海洋廣場',t:'9:55 看海、拍照、廁所',ll:[25.1309627,121.7413639]},
- {n:3,name:'陽明海洋文化藝術館',t:'10:15–11:30',ll:[25.1326261,121.7399987]},
+ {n:2,name:'海洋廣場',t:'9:55 看海、拍照、廁所',u:'https://n.yam.com/Article/20240904812868',ll:[25.1309627,121.7413639]},
+ {n:3,name:'陽明海洋文化藝術館',t:'10:15–11:30',u:'https://gofunit.com/%e9%99%bd%e6%98%8e%e6%b5%b7%e6%b4%8b%e6%96%87%e5%8c%96%e8%97%9d%e8%a1%93%e9%a4%a8/',ll:[25.1326261,121.7399987]},
  {n:4,name:'湖南小館（午餐）',t:'11:45 最大集合點',ll:[25.1331869,121.7460471],lunch:1},
- {n:5,name:'麗都蝶客花園',t:'13:00 看海、團體照；14:10 出發',ll:[25.1341923,121.744855]},
- {n:6,name:'新新牛軋糖（愛一路27號）',t:'回程順路買 14:20–14:35',ll:[25.1292075,121.7414815],shop:1},
- {n:7,name:'李鵠餅店（仁三路90號）',t:'蛋黃酥、鳳梨酥；與新新同一帶',ll:[25.1292581,121.7418618],shop:1}
+ {n:5,name:'麗都蝶客花園',t:'13:00 看海、團體照；14:10 出發',u:'https://bunnyann.tw/lido/',ll:[25.1341923,121.744855]},
+ {n:6,name:'新新牛軋糖（愛一路27號）',t:'回程順路買 14:20–14:35',u:'https://gofunit.com/%E5%9F%BA%E9%9A%86%E5%90%8D%E7%94%A2/',ll:[25.1292075,121.7414815],shop:1},
+ {n:7,name:'李鵠餅店（仁三路90號）',t:'蛋黃酥、鳳梨酥；與新新同一帶',u:'https://gofunit.com/%E5%9F%BA%E9%9A%86%E5%90%8D%E7%94%A2/',ll:[25.1292581,121.7418618],shop:1}
 ];
 var F=[
- {name:'基隆塔',t:'自由行：離湖南小館 170 m；塔在山坡，請量力',ll:[25.1328033,121.7470181]},
- {name:'廟口夜市一帶（位置示意）',t:'自由行：離麗都約 700 m，小吃、金興蔴粩、泉利米香',ll:[25.1290247,121.7440256]},
- {name:'仁愛市場',t:'自由行：離車站 550 m',ll:[25.128054,121.741071]}
+ {name:'基隆塔',t:'自由行：離湖南小館 170 m；塔在山坡，請量力',u:'https://supertaste.tvbs.com.tw/travel/348884',ll:[25.1328033,121.7470181]},
+ {name:'廟口夜市一帶（位置示意）',t:'自由行：離麗都約 700 m，小吃、金興蔴粩、泉利米香',u:'https://bunnyann.tw/?p=575',ll:[25.1290247,121.7440256]},
+ {name:'仁愛市場',t:'自由行：離車站 550 m',u:'https://www.bella.tw/articles/travel&foodies/42695',ll:[25.128054,121.741071]}
 ];
 try{
  var map=L.map('map',{scrollWheelZoom:false});
  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(map);
  function pin(p,cls,label){
   L.marker(p.ll,{icon:L.divIcon({className:'',html:'<div class="pin '+cls+'">'+label+'</div>',iconSize:[28,28],iconAnchor:[14,14]})})
-   .addTo(map).bindPopup('<b>'+p.name+'</b><br>'+p.t);
+   .addTo(map).bindPopup('<b>'+p.name+'</b><br>'+p.t+(p.u?'<br><a href="'+p.u+'" target="_blank" rel="noopener">景點介紹 ›</a>':''));
   L.tooltip({permanent:true,direction:'top',offset:[0,-14]}).setContent(p.name.replace(/（.*/,'')).setLatLng(p.ll).addTo(map);
  }
  P.forEach(function(p){pin(p,p.lunch?'lunch':(p.shop?'shop':''),p.n)});
