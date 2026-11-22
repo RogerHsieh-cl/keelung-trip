@@ -16,12 +16,15 @@ table{width:100%;border-collapse:collapse;background:#fff;font-size:14px}th,td{b
 .note{font-size:13px;color:#666}
 a{color:var(--navy)}
 .far{background:#ffe9e5}
+.pin.shop{background:#8e44ad}.pin.free{background:#27ae60}
+.legend span{display:inline-block;margin-right:12px;font-size:14px}.legend i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:4px;vertical-align:-1px}
 </style></head><body>
 <header><h1>基隆一日遊｜路線地圖</h1><p>各景點相對位置與步行距離（步行距離與時間為 Google 地圖查詢結果）</p></header>
 <div class="wrap">
-<div class="key">最長的兩段：陽明館→午餐 約 1.0 km（14 分）、麗都→車站 約 900 m（13 分）。午餐店和麗都只隔 170 m。</div>
+<div class="key">最長的兩段：陽明館→午餐 約 1.0 km（14 分）、麗都→愛一路 700 m（10 分）。午餐店和麗都只隔 170 m。回程順路買伴手禮。</div>
+<div class="legend"><span><i style="background:#1d3557"></i>主行程</span><span><i style="background:#c0392b"></i>午餐</span><span><i style="background:#8e44ad"></i>伴手禮</span><span><i style="background:#27ae60"></i>自由行景點</span></div>
 <div id="map"></div>
-<p class="note">地圖上的虛線是直線連接，只表示相對位置；實際步行路線請看下表。①車站位置為示意。</p>
+<p class="note">港口不能直接穿過，所以<b>距離全部用 Google 步行路線</b>（沿港口繞行），不是直線。地圖上的線是依道路畫的示意，載入失敗時就只顯示標記。①車站、廟口位置為示意。</p>
 
 <h2>每一段多遠</h2>
 <table>
@@ -31,15 +34,21 @@ a{color:var(--navy)}
 <tr class="far"><td>③ 陽明館 → ④ 湖南小館（午餐）</td><td>約 1.0 km</td><td>14 分</td></tr>
 <tr><td>④ 湖南小館 → ⑤ 麗都蝶客花園</td><td>170 m</td><td>2 分</td></tr>
 <tr class="far"><td>⑤ 麗都蝶客花園 → ① 基隆車站</td><td>約 900 m</td><td>13 分</td></tr>
+<tr class="far"><td>⑤ 麗都 → ⑥ 新新牛軋糖（愛一路，回程順路買）</td><td>700 m</td><td>10 分</td></tr>
+<tr><td>⑥ 新新牛軋糖 → ① 基隆車站</td><td>400 m</td><td>6 分</td></tr>
+<tr><td>⑥ 新新牛軋糖 ↔ ⑦ 李鵠餅店（仁三路）</td><td>約 40 m 之內（同一帶）</td><td>1 分</td></tr>
+<tr><td>（自由行）湖南小館 → 基隆塔</td><td>170 m（Google 標示平坦；塔本身在山坡上，請現場確認）</td><td>3 分</td></tr>
+<tr><td>（自由行）麗都 → 廟口一帶</td><td>約 700 m</td><td>11 分</td></tr>
+<tr><td>（自由行）車站 → 仁愛市場</td><td>550 m</td><td>8 分</td></tr>
 <tr><td>（直接）基隆車站 → 陽明館</td><td>200 m</td><td>3 分</td></tr>
 <tr><td>（直接）基隆車站 → 湖南小館</td><td>約 1.0 km</td><td>14 分</td></tr></table>
-<p class="note">全程步行約 2.6 km。Google 標示這幾段「多為平坦路段」。時間是一般成人步行，長輩與小孩請抓 1.5 倍。</p>
+<p class="note">主行程步行約 2.6 km；回程改走愛一路買伴手禮，麗都→車站變成 1.1 km（多 200 m）。Google 標示這幾段「多為平坦路段」。時間是一般成人步行，長輩與小孩請抓 1.5 倍。</p>
 
 <h2>建議</h2>
 <ul>
 <li>陽明館 11:30 就要出發，才能 11:45 到午餐。</li>
 <li>兩段較長的路（陽明館→午餐、麗都→車站）可讓走不動的長輩搭計程車。</li>
-<li>麗都 14:20 就要出發，14:54 才趕得上車。</li></ul>
+<li>回程路線：麗都 <b>14:10</b> 出發 → 愛一路伴手禮 14:20–14:35 → 車站 <b>14:45</b> 集合 → 14:54 開車。店家都在平路上，Google 標示「多為平坦」。</li><li>伴手禮店（營業時間以網路資料為準，12/25 未確認）：新新牛軋糖（愛一路27號）、李鵠餅店（仁三路90號，蛋黃酥、鳳梨酥）、連珍糕餅（愛二路42號，距車站約 10 分，未標在圖上）。</li><li>自由行景點（不帶團，自己安排）：基隆塔、廟口夜市、仁愛市場，標在圖上綠色。</li></ul>
 
 <h2>各段在 Google 地圖開啟</h2>
 <ul>
@@ -47,27 +56,45 @@ a{color:var(--navy)}
 <li><a href="https://www.google.com/maps/dir/?api=1&origin=基隆海洋廣場&destination=陽明海洋文化藝術館&travelmode=walking" target="_blank" rel="noopener">海洋廣場 → 陽明館</a></li>
 <li><a href="https://www.google.com/maps/dir/?api=1&origin=陽明海洋文化藝術館&destination=基隆市中正區義一路68號湖南小館&travelmode=walking" target="_blank" rel="noopener">陽明館 → 湖南小館</a></li>
 <li><a href="https://www.google.com/maps/dir/?api=1&origin=基隆市中正區義一路68號湖南小館&destination=麗都蝶客花園&travelmode=walking" target="_blank" rel="noopener">湖南小館 → 麗都</a></li>
-<li><a href="https://www.google.com/maps/dir/?api=1&origin=麗都蝶客花園&destination=基隆車站&travelmode=walking" target="_blank" rel="noopener">麗都 → 車站</a></li></ul>
+<li><a href="https://www.google.com/maps/dir/?api=1&origin=麗都蝶客花園&destination=基隆市仁愛區愛一路27號&travelmode=walking" target="_blank" rel="noopener">麗都 → 新新牛軋糖（愛一路）</a></li>
+<li><a href="https://www.google.com/maps/dir/?api=1&origin=基隆市仁愛區愛一路27號&destination=基隆車站&travelmode=walking" target="_blank" rel="noopener">新新牛軋糖 → 車站</a></li></ul>
 </div>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
 var P=[
- {n:1,name:'基隆車站',t:'8:45 集合／14:54 回程',ll:[25.1314,121.7399]},
+ {n:1,name:'基隆車站',t:'8:45 集合／14:45 集合、14:54 回程',ll:[25.1314,121.7399]},
  {n:2,name:'海洋廣場',t:'9:55 看海、拍照、廁所',ll:[25.1309627,121.7413639]},
  {n:3,name:'陽明海洋文化藝術館',t:'10:15–11:30',ll:[25.1326261,121.7399987]},
  {n:4,name:'湖南小館（午餐）',t:'11:45 最大集合點',ll:[25.1331869,121.7460471],lunch:1},
- {n:5,name:'麗都蝶客花園',t:'13:00 看海、團體照',ll:[25.1341923,121.744855]}
+ {n:5,name:'麗都蝶客花園',t:'13:00 看海、團體照；14:10 出發',ll:[25.1341923,121.744855]},
+ {n:6,name:'新新牛軋糖（愛一路27號）',t:'回程順路買 14:20–14:35',ll:[25.1292075,121.7414815],shop:1},
+ {n:7,name:'李鵠餅店（仁三路90號）',t:'蛋黃酥、鳳梨酥；與新新同一帶',ll:[25.1292581,121.7418618],shop:1}
+];
+var F=[
+ {name:'基隆塔',t:'自由行：離湖南小館 170 m；塔在山坡，請量力',ll:[25.1328033,121.7470181]},
+ {name:'廟口夜市一帶（位置示意）',t:'自由行：離麗都約 700 m，小吃、金興蔴粩、泉利米香',ll:[25.1290247,121.7440256]},
+ {name:'仁愛市場',t:'自由行：離車站 550 m',ll:[25.128054,121.741071]}
 ];
 try{
  var map=L.map('map',{scrollWheelZoom:false});
  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(map);
- var pts=P.map(function(p){return p.ll});
- L.polyline(pts.concat([pts[0]]),{color:'#c0392b',weight:3,dashArray:'6 6'}).addTo(map);
- P.forEach(function(p){
-  L.marker(p.ll,{icon:L.divIcon({className:'',html:'<div class="pin'+(p.lunch?' lunch':'')+'">'+p.n+'</div>',iconSize:[28,28],iconAnchor:[14,14]})})
-   .addTo(map).bindPopup('<b>'+p.n+' '+p.name+'</b><br>'+p.t);
-  L.tooltip({permanent:true,direction:'top',offset:[0,-14]}).setContent(p.name).setLatLng(p.ll).addTo(map);
+ function pin(p,cls,label){
+  L.marker(p.ll,{icon:L.divIcon({className:'',html:'<div class="pin '+cls+'">'+label+'</div>',iconSize:[28,28],iconAnchor:[14,14]})})
+   .addTo(map).bindPopup('<b>'+p.name+'</b><br>'+p.t);
+  L.tooltip({permanent:true,direction:'top',offset:[0,-14]}).setContent(p.name.replace(/（.*/,'')).setLatLng(p.ll).addTo(map);
+ }
+ P.forEach(function(p){pin(p,p.lunch?'lunch':(p.shop?'shop':''),p.n)});
+ F.forEach(function(p){pin(p,'free','★')});
+ var all=P.concat(F).map(function(p){return p.ll});
+ map.fitBounds(L.latLngBounds(all).pad(0.2));
+ // 依道路畫路線（OSRM 公開服務），失敗就略過
+ var legs=[[0,1],[1,2],[2,3],[3,4],[4,5],[5,0]];
+ legs.forEach(function(g){
+  var a=P[g[0]].ll,b=P[g[1]].ll;
+  fetch('https://router.project-osrm.org/route/v1/foot/'+a[1]+','+a[0]+';'+b[1]+','+b[0]+'?overview=full&geometries=geojson')
+   .then(function(r){return r.json()}).then(function(d){
+    if(d&&d.routes&&d.routes[0]){L.geoJSON(d.routes[0].geometry,{style:{color:'#c0392b',weight:4,opacity:.75}}).addTo(map)}
+   }).catch(function(){});
  });
- map.fitBounds(L.latLngBounds(pts).pad(0.25));
 }catch(e){document.getElementById('map').innerHTML='<p style="padding:12px">地圖無法載入，請看下方表格或用「在 Google 地圖開啟」。</p>'}
 </script></body></html>
