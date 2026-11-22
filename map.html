@@ -25,15 +25,15 @@ a{color:var(--navy)}
 <div id="map"></div>
 
 <div class="tab on" id="t0">
-<div class="key">主行程：午餐湖南小館，飯後到對面麗都空中花園</div>
+<div class="key">主行程：陽明館 → 海洋廣場休息 → 湖南小館午餐 → 麗都</div>
 <table><tr><th>路段</th><th>步行距離</th><th>時間</th></tr>
-<tr><td>1 車站 → 2 海洋廣場</td><td>240 m</td><td>3 分</td></tr>
-<tr><td>2 海洋廣場 → 3 陽明館</td><td>270 m</td><td>4 分</td></tr>
-<tr><td>3 陽明館 → 4 湖南小館（午餐）</td><td>約 1.0 km</td><td>14 分（可搭計程車）</td></tr>
+<tr><td>1 車站 → 2 陽明館（待最久）</td><td>200 m</td><td>3 分</td></tr>
+<tr><td>2 陽明館 → 3 海洋廣場（休息點）</td><td>270 m</td><td>4 分</td></tr>
+<tr><td>3 海洋廣場 → 4 湖南小館（午餐）</td><td>700 m</td><td>10 分</td></tr>
 <tr><td>4 湖南小館 → 5 麗都空中花園</td><td>170 m</td><td>2 分</td></tr>
 <tr><td>5 麗都 → 6 愛一路（回程休息點）</td><td>700 m</td><td>10 分</td></tr>
 <tr><td>6 愛一路 → 1 車站</td><td>400 m</td><td>6 分</td></tr></table>
-<p class="note">只有 3→4 超過 10 分鐘，可讓走不動的長輩搭計程車。回程不直接走 13 分鐘，改走愛一路分成 10 分＋6 分，中間可休息、買伴手禮。Google 標示這幾段「多為平坦路段」。長輩與小孩請抓 1.5 倍時間。</p></div>
+<p class="note">每段都在 10 分鐘內。陽明館到湖南小館直接走要 15 分，所以中途停海洋廣場休息、重新集合；走不動的長輩仍可從海洋廣場搭計程車。回程不直接走 13 分鐘，改走愛一路分成 10 分＋6 分，中間可休息、買伴手禮。Google 標示這幾段「多為平坦路段」。長輩與小孩請抓 1.5 倍時間。</p></div>
 
 <div class="tab" id="t1"><div class="key">伴手禮：回程在愛一路買（時間約 15 分）</div>
 <table><tr><th>路段</th><th>步行距離</th><th>時間</th></tr>
@@ -84,10 +84,10 @@ var PT={
  lu:{name:'廟口一帶',ll:[25.1290247,121.7440256],off:[56,-6],u:'https://bunnyann.tw/?p=575'}
 };
 var TABS=[
- {n:'主行程',pts:[['st','1'],['sq','2'],['ym','3'],['hn','4','lunch'],['ld','5'],['ay','6','alt']],rt:[['st','sq'],['sq','ym'],['ym','hn'],['hn','ld'],['ld','ay'],['ay','st']],c:'#c0392b'},
+ {n:'主行程',pts:[['st','1'],['ym','2'],['sq','3'],['hn','4','lunch'],['ld','5'],['ay','6','alt']],rt:[['st','ym'],['ym','sq'],['sq','hn'],['hn','ld'],['ld','ay'],['ay','st']],c:'#c0392b'},
  {n:'伴手禮',pts:[['ld','麗'],['xx','1','shop'],['lh','2','shop'],['st','車','alt']],rt:[['ld','xx'],['xx','st']],c:'#8e44ad'},
  {n:'自由行',pts:[['hn','午','lunch'],['kt','A','free'],['xe','B','free'],['lu','C','free'],['st','車','alt']],rt:[['hn','kt'],['kt','xe'],['xe','lu'],['lu','st']],c:'#27ae60',dash:'6 6'},
- {n:'雨天備案',pts:[['st','1'],['sq','2'],['bp','3','lunch']],rt:[['st','sq'],['sq','bp']],c:'#1d3557'}
+ {n:'雨天備案',pts:[['st','1'],['bp','2','lunch']],rt:[['st','bp']],c:'#1d3557'}
 ];
 try{
  var map=L.map('map',{scrollWheelZoom:false});
