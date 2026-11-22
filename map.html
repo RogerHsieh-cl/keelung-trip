@@ -88,7 +88,7 @@ try{
  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(map);
  var G={base:L.layerGroup().addTo(map),A:L.layerGroup().addTo(map),B:L.layerGroup().addTo(map),S:L.layerGroup().addTo(map),F:L.layerGroup().addTo(map)};
  var SHORT={'基隆車站':'車站','海洋廣場':'海洋廣場','陽明海洋文化藝術館':'陽明館','湖南小館（午餐）':'湖南小館','麗都蝶客花園':'麗都','新新牛軋糖（愛一路27號）':'新新牛軋糖','李鵠餅店（仁三路90號）':'李鵠餅店','信二防空洞':'信二防空洞','基隆塔':'基隆塔','廟口夜市一帶（位置示意）':'廟口夜市','仁愛市場':'仁愛市場'};
- var OFF={'基隆車站':[-62,0],'海洋廣場':[28,34],'陽明海洋文化藝術館':[-60,-34],'湖南小館（午餐）':[62,-22],'麗都蝶客花園':[-40,-48],'新新牛軋糖（愛一路27號）':[-70,26],'李鵠餅店（仁三路90號）':[-10,50],'信二防空洞':[62,18],'基隆塔':[48,-34],'廟口夜市一帶（位置示意）':[56,-4],'仁愛市場':[-60,56]};
+ var OFF={'基隆車站':[-62,0],'海洋廣場':[28,34],'陽明海洋文化藝術館':[-60,-34],'湖南小館（午餐）':[30,-58],'麗都蝶客花園':[-40,-48],'新新牛軋糖（愛一路27號）':[-70,26],'李鵠餅店（仁三路90號）':[34,46],'信二防空洞':[62,18],'基隆塔':[72,-4],'廟口夜市一帶（位置示意）':[56,-4],'仁愛市場':[-60,56]};
  function pin(p,cls,label,g){
   var o=OFF[p.name]||[40,-30],nm=SHORT[p.name]||p.name;
   var h='<div style="position:relative;width:24px;height:24px"><svg style="position:absolute;left:12px;top:12px;overflow:visible;width:1px;height:1px"><line x1="0" y1="0" x2="'+o[0]+'" y2="'+o[1]+'" stroke="#444" stroke-width="1.2"/></svg>'
