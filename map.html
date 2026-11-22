@@ -7,111 +7,106 @@
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:#222;font:16px/1.6 -apple-system,"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif}
 header{background:var(--navy);color:#fff;padding:14px 16px}header h1{margin:0;font-size:20px}header p{margin:2px 0 0;font-size:14px;opacity:.9}
 .wrap{max-width:780px;margin:0 auto;padding:0 12px 40px}
-#map{height:540px;border-radius:12px;margin:12px 0;border:1px solid var(--line)}
+.tabs{display:flex;gap:6px;margin:12px 0 0;flex-wrap:wrap}.tabs button{border:1px solid var(--navy);background:#fff;color:var(--navy);border-radius:18px;padding:5px 14px;font-size:15px}.tabs button.on{background:var(--navy);color:#fff}
+#map{height:480px;border-radius:12px;margin:10px 0;border:1px solid var(--line)}
 h2{font-size:18px;color:var(--navy);margin:20px 0 6px}
 table{width:100%;border-collapse:collapse;background:#fff;font-size:14px}th,td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}th{background:#ece8dc}
 .pin{background:var(--navy);color:#fff;border:2px solid #fff;border-radius:50%;width:24px;height:24px;line-height:20px;font-size:13px;text-align:center;font-weight:700;box-shadow:0 1px 4px #0006}
-.pin.lunch{background:var(--red)}
+.pin.lunch{background:var(--red)}.pin.shop{background:#8e44ad}.pin.free{background:#27ae60}.pin.alt{background:#7f8c8d}
+.lbl{position:absolute;transform:translate(-50%,-50%);background:#fffffff0;border:1px solid #888;border-radius:6px;padding:0 5px;font-size:12px;line-height:18px;white-space:nowrap;font-weight:600;z-index:5}
 .key{background:#fff3b0;border-radius:8px;padding:6px 10px;font-weight:700;margin:8px 0}
 .note{font-size:13px;color:#666}
 a{color:var(--navy)}
-.far{background:#ffe9e5}
-.pin.shop{background:#8e44ad}.pin.free{background:#27ae60}
-.ctl label{display:inline-block;margin:0 12px 4px 0;font-size:14px}.lbl{position:absolute;transform:translate(-50%,-50%);background:#fffffff0;border:1px solid #888;border-radius:6px;padding:0 5px;font-size:12px;line-height:18px;white-space:nowrap;font-weight:600;z-index:5}.legend span{display:inline-block;margin-right:12px;font-size:14px}.legend i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:4px;vertical-align:-1px}
+.tab{display:none}.tab.on{display:block}
 </style></head><body>
-<header><h1>基隆一日遊｜路線地圖</h1><p>各景點相對位置與步行距離（步行距離與時間為 Google 地圖查詢結果）</p></header>
+<header><h1>基隆一日遊｜路線地圖</h1><p>步行距離與時間為 Google 地圖結果，沿港口繞行，不是直線</p></header>
 <div class="wrap">
-<div class="key">最長的兩段：陽明館→午餐 約 1.0 km（14 分）、麗都→愛一路 700 m（10 分）。午餐店和麗都只隔 170 m。回程順路買伴手禮。</div>
-<div class="ctl"><label><input type="checkbox" id="cA" checked> 路線A（湖南小館）</label><label><input type="checkbox" id="cB" checked> 路線B（廟口午餐）</label><label><input type="checkbox" id="cS" checked> 伴手禮</label><label><input type="checkbox" id="cF" checked> 自由行</label></div>
-<div class="legend"><span><i style="background:#1d3557"></i>主行程</span><span><i style="background:#c0392b"></i>路線A（紅線）</span><span><i style="background:#2471a3"></i>路線B（藍線）</span><span><i style="background:#8e44ad"></i>伴手禮</span><span><i style="background:#27ae60"></i>自由行景點</span></div>
+<div class="tabs" id="tabs"></div>
 <div id="map"></div>
-<table><tr><th>編號</th><th>地點</th></tr>
-<tr><td>1</td><td>基隆車站</td></tr><tr><td>2</td><td>海洋廣場</td></tr><tr><td>3</td><td>陽明海洋文化藝術館</td></tr><tr><td>4</td><td>湖南小館（路線A午餐）</td></tr><tr><td>5</td><td>麗都蝶客花園</td></tr><tr><td>6</td><td>新新牛軋糖（愛一路）</td></tr><tr><td>7</td><td>李鵠餅店（仁三路）</td></tr>
-<tr><td>A</td><td>信二防空洞（自由行）</td></tr><tr><td>B</td><td>基隆塔（自由行）</td></tr><tr><td>C</td><td>廟口夜市一帶（路線B午餐區；其餘為自由行）</td></tr><tr><td>D</td><td>仁愛市場（自由行）</td></tr></table>
-<p class="note"><b>路線A</b>：車站→海洋廣場→陽明館→湖南小館→麗都→愛一路→車站。<b>路線B</b>：車站→海洋廣場→陽明館→廟口一帶午餐→愛一路→車站，午餐後可選 綠色虛線 廟口→信二防空洞→基隆塔。上方勾選可分開看。<br>點地圖上的標記可看說明和介紹連結。港口不能直接穿過，所以<b>距離全部用 Google 步行路線</b>（沿港口繞行），不是直線。地圖上的線是依道路畫的示意，載入失敗時就只顯示標記。①車站、廟口位置為示意。</p>
 
-<h2>每一段多遠</h2>
-<table>
-<tr><th>路段</th><th>步行距離</th><th>時間</th></tr>
-<tr><td>① 基隆車站 → ② 海洋廣場</td><td>240 m</td><td>3 分</td></tr>
-<tr><td>② 海洋廣場 → ③ 陽明館</td><td>270 m</td><td>4 分</td></tr>
-<tr class="far"><td>③ 陽明館 → ④ 湖南小館（午餐）</td><td>約 1.0 km</td><td>14 分</td></tr>
-<tr><td>④ 湖南小館 → ⑤ 麗都蝶客花園</td><td>170 m</td><td>2 分</td></tr>
-<tr class="far"><td>⑤ 麗都蝶客花園 → ① 基隆車站</td><td>約 900 m</td><td>13 分</td></tr>
-<tr class="far"><td>⑤ 麗都 → ⑥ 新新牛軋糖（愛一路，回程順路買）</td><td>700 m</td><td>10 分</td></tr>
-<tr><td>⑥ 新新牛軋糖 → ① 基隆車站</td><td>400 m</td><td>6 分</td></tr>
-<tr><td>⑥ 新新牛軋糖 ↔ ⑦ 李鵠餅店（仁三路）</td><td>約 40 m 之內（同一帶）</td><td>1 分</td></tr>
-<tr><td>（自由行）湖南小館 → 基隆塔</td><td>170 m（Google 標示平坦；塔本身在山坡上，請現場確認）</td><td>3 分</td></tr>
-<tr><td>（自由行）廟口一帶 → 信二防空洞</td><td>350 m</td><td>5 分</td></tr>
-<tr><td>（自由行）信二防空洞 → 基隆塔</td><td>300 m</td><td>4 分</td></tr>
-<tr><td>（自由行）車站 → 信二防空洞</td><td>800 m</td><td>12 分</td></tr>
-<tr><td>（自由行）麗都 → 廟口一帶</td><td>約 700 m</td><td>11 分</td></tr>
-<tr><td>（自由行）車站 → 仁愛市場</td><td>550 m</td><td>8 分</td></tr>
-<tr><td>（直接）基隆車站 → 陽明館</td><td>200 m</td><td>3 分</td></tr>
-<tr><td>（直接）基隆車站 → 湖南小館</td><td>約 1.0 km</td><td>14 分</td></tr></table>
-<p class="note">主行程步行約 2.6 km；回程改走愛一路買伴手禮，麗都→車站變成 1.1 km（多 200 m）。Google 標示這幾段「多為平坦路段」。時間是一般成人步行，長輩與小孩請抓 1.5 倍。</p>
+<div class="tab on" id="t0">
+<div class="key">主行程：每一段都在 10 分鐘內，全程約 1.7 km</div>
+<table><tr><th>路段</th><th>步行距離</th><th>時間</th></tr>
+<tr><td>1 車站 → 2 海洋廣場</td><td>240 m</td><td>3 分</td></tr>
+<tr><td>2 海洋廣場 → 3 陽明館</td><td>270 m</td><td>4 分</td></tr>
+<tr><td>3 陽明館 → 4 午餐（廟口一帶）</td><td>650 m</td><td>10 分</td></tr>
+<tr><td>4 午餐（廟口一帶）→ 1 車站</td><td>550 m</td><td>8 分</td></tr></table>
+<p class="note">午餐餐廳還沒定，4 號是廟口一帶的示意位置。Google 標示這幾段「多為平坦路段」。長輩與小孩請抓 1.5 倍時間。</p></div>
 
-<h2>建議</h2>
-<ul>
-<li>陽明館 11:30 就要出發，才能 11:45 到午餐。</li>
-<li>兩段較長的路（陽明館→午餐、麗都→車站）可讓走不動的長輩搭計程車。</li>
-<li>回程路線：麗都 <b>14:10</b> 出發 → 愛一路伴手禮 14:20–14:35 → 車站 <b>14:45</b> 集合 → 14:54 開車。店家都在平路上，Google 標示「多為平坦」。</li><li>伴手禮店（營業時間以網路資料為準，12/25 未確認）：新新牛軋糖（愛一路27號）、李鵠餅店（仁三路90號，蛋黃酥、鳳梨酥）、連珍糕餅（愛二路42號，距車站約 10 分，未標在圖上）。</li><li>自由行景點（不帶團，自己安排）：基隆塔、廟口夜市、仁愛市場，標在圖上綠色。</li></ul>
+<div class="tab" id="t1"><div class="key">伴手禮：午餐後順路走愛一路，再回車站</div>
+<table><tr><th>路段</th><th>步行距離</th><th>時間</th></tr>
+<tr><td>午餐（廟口一帶）→ 新新牛軋糖（愛一路27號）</td><td>約 300 m</td><td>約 4 分（估）</td></tr>
+<tr><td>新新牛軋糖 → 車站</td><td>400 m</td><td>6 分</td></tr>
+<tr><td>新新牛軋糖 ↔ 李鵠餅店（仁三路90號）</td><td colspan="2">同一帶，約 1 分</td></tr></table>
+<p class="note">店家：<a href="https://gofunit.com/%E5%9F%BA%E9%9A%86%E5%90%8D%E7%94%A2/" target="_blank" rel="noopener">新新牛軋糖、李鵠餅店介紹</a>。連珍糕餅（愛二路42號）在廟口附近未標出。營業時間 12/25 未確認。</p></div>
+
+<div class="tab" id="t2"><div class="key">自由行：午餐後想多走的人，每段 5 分鐘內</div>
+<table><tr><th>路段</th><th>步行距離</th><th>時間</th></tr>
+<tr><td>廟口一帶 → A 信二防空洞</td><td>350 m</td><td>5 分</td></tr>
+<tr><td>A 信二防空洞 → B 基隆塔</td><td>300 m</td><td>4 分</td></tr>
+<tr><td>車站 → C 仁愛市場</td><td>550 m</td><td>8 分</td></tr></table>
+<p class="note">介紹：<a href="https://www.bella.tw/articles/travel&foodies/46569" target="_blank" rel="noopener">信二防空洞與基隆塔</a>、<a href="https://supertaste.tvbs.com.tw/travel/348884" target="_blank" rel="noopener">基隆塔亮點</a>。基隆塔在坡上，長輩小孩請量力。</p></div>
+
+<div class="tab" id="t3"><div class="key">備案（不建議）：午餐在湖南小館，兩段較長</div>
+<table><tr><th>路段</th><th>步行距離</th><th>時間</th></tr>
+<tr><td>陽明館 → 湖南小館</td><td>約 1.0 km</td><td>14 分</td></tr>
+<tr><td>湖南小館 → 麗都</td><td>170 m</td><td>2 分</td></tr>
+<tr><td>麗都 → 愛一路新新牛軋糖</td><td>700 m</td><td>10 分</td></tr>
+<tr><td>新新牛軋糖 → 車站</td><td>400 m</td><td>6 分</td></tr></table>
+<p class="note">介紹：<a href="https://bunnyann.tw/lido/" target="_blank" rel="noopener">麗都蝶客花園</a>。</p></div>
 
 <h2>各段在 Google 地圖開啟</h2>
 <ul>
 <li><a href="https://www.google.com/maps/dir/?api=1&origin=基隆車站&destination=基隆海洋廣場&travelmode=walking" target="_blank" rel="noopener">車站 → 海洋廣場</a></li>
 <li><a href="https://www.google.com/maps/dir/?api=1&origin=基隆海洋廣場&destination=陽明海洋文化藝術館&travelmode=walking" target="_blank" rel="noopener">海洋廣場 → 陽明館</a></li>
-<li><a href="https://www.google.com/maps/dir/?api=1&origin=陽明海洋文化藝術館&destination=基隆市中正區義一路68號湖南小館&travelmode=walking" target="_blank" rel="noopener">陽明館 → 湖南小館</a></li>
-<li><a href="https://www.google.com/maps/dir/?api=1&origin=基隆市中正區義一路68號湖南小館&destination=麗都蝶客花園&travelmode=walking" target="_blank" rel="noopener">湖南小館 → 麗都</a></li>
-<li><a href="https://www.google.com/maps/dir/?api=1&origin=麗都蝶客花園&destination=基隆市仁愛區愛一路27號&travelmode=walking" target="_blank" rel="noopener">麗都 → 新新牛軋糖（愛一路）</a></li>
-<li><a href="https://www.google.com/maps/dir/?api=1&origin=基隆市仁愛區愛一路27號&destination=基隆車站&travelmode=walking" target="_blank" rel="noopener">新新牛軋糖 → 車站</a></li></ul>
+<li><a href="https://www.google.com/maps/dir/?api=1&origin=陽明海洋文化藝術館&destination=基隆廟口夜市&travelmode=walking" target="_blank" rel="noopener">陽明館 → 廟口</a></li>
+<li><a href="https://www.google.com/maps/dir/?api=1&origin=基隆廟口夜市&destination=基隆車站&travelmode=walking" target="_blank" rel="noopener">廟口 → 車站</a></li></ul>
 </div>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-var P=[
- {n:1,name:'基隆車站',t:'8:45 集合／14:45 集合、14:54 回程',ll:[25.1314,121.7399]},
- {n:2,name:'海洋廣場',t:'9:55 看海、拍照、廁所',u:'https://n.yam.com/Article/20240904812868',ll:[25.1309627,121.7413639]},
- {n:3,name:'陽明海洋文化藝術館',t:'10:15–11:30',u:'https://gofunit.com/%e9%99%bd%e6%98%8e%e6%b5%b7%e6%b4%8b%e6%96%87%e5%8c%96%e8%97%9d%e8%a1%93%e9%a4%a8/',ll:[25.1326261,121.7399987]},
- {n:4,name:'湖南小館（午餐）',t:'11:45 最大集合點',ll:[25.1331869,121.7460471],lunch:1},
- {n:5,name:'麗都蝶客花園',t:'13:00 看海、團體照；14:10 出發',u:'https://bunnyann.tw/lido/',ll:[25.1341923,121.744855]},
- {n:6,name:'新新牛軋糖（愛一路27號）',t:'回程順路買 14:20–14:35',u:'https://gofunit.com/%E5%9F%BA%E9%9A%86%E5%90%8D%E7%94%A2/',ll:[25.1292075,121.7414815],shop:1},
- {n:7,name:'李鵠餅店（仁三路90號）',t:'蛋黃酥、鳳梨酥；與新新同一帶',u:'https://gofunit.com/%E5%9F%BA%E9%9A%86%E5%90%8D%E7%94%A2/',ll:[25.1292581,121.7418618],shop:1}
-];
-var F=[
- {name:'信二防空洞',t:'自由行：離廟口 350 m（5 分）、離基隆塔 300 m（4 分）、離車站 800 m（12 分）',u:'https://www.bella.tw/articles/travel&foodies/46569',ll:[25.1312366,121.7461065]},
- {name:'基隆塔',t:'自由行：離湖南小館 170 m；塔在山坡，請量力',u:'https://supertaste.tvbs.com.tw/travel/348884',ll:[25.1328033,121.7470181]},
- {name:'廟口夜市一帶（位置示意）',t:'自由行：離麗都約 700 m，小吃、金興蔴粩、泉利米香',u:'https://bunnyann.tw/?p=575',ll:[25.1290247,121.7440256]},
- {name:'仁愛市場',t:'自由行：離車站 550 m',u:'https://www.bella.tw/articles/travel&foodies/42695',ll:[25.128054,121.741071]}
+var PT={
+ st:{name:'基隆車站',ll:[25.1314,121.7399],off:[-62,0]},
+ sq:{name:'海洋廣場',ll:[25.1309627,121.7413639],off:[30,34],u:'https://n.yam.com/Article/20240904812868'},
+ ym:{name:'陽明館',ll:[25.1326261,121.7399987],off:[-56,-32],u:'https://gofunit.com/%e9%99%bd%e6%98%8e%e6%b5%b7%e6%b4%8b%e6%96%87%e5%8c%96%e8%97%9d%e8%a1%93%e9%a4%a8/'},
+ lu:{name:'午餐：廟口一帶',ll:[25.1290247,121.7440256],off:[62,-6],u:'https://bunnyann.tw/?p=575'},
+ xx:{name:'新新牛軋糖',ll:[25.1292075,121.7414815],off:[-66,24],u:'https://gofunit.com/%E5%9F%BA%E9%9A%86%E5%90%8D%E7%94%A2/'},
+ lh:{name:'李鵠餅店',ll:[25.1292581,121.7418618],off:[34,46],u:'https://gofunit.com/%E5%9F%BA%E9%9A%86%E5%90%8D%E7%94%A2/'},
+ xe:{name:'信二防空洞',ll:[25.1312366,121.7461065],off:[62,16],u:'https://www.bella.tw/articles/travel&foodies/46569'},
+ kt:{name:'基隆塔',ll:[25.1328033,121.7470181],off:[60,-14],u:'https://supertaste.tvbs.com.tw/travel/348884'},
+ ra:{name:'仁愛市場',ll:[25.128054,121.741071],off:[-60,40],u:'https://www.bella.tw/articles/travel&foodies/42695'},
+ hn:{name:'湖南小館',ll:[25.1331869,121.7460471],off:[34,-50]},
+ ld:{name:'麗都',ll:[25.1341923,121.744855],off:[-44,-46],u:'https://bunnyann.tw/lido/'}
+};
+var TABS=[
+ {n:'主行程',pts:[['st','1'],['sq','2'],['ym','3'],['lu','4','lunch']],rt:[['st','sq'],['sq','ym'],['ym','lu'],['lu','st']],c:'#1d3557'},
+ {n:'伴手禮',pts:[['st','車','alt'],['lu','午','lunch'],['xx','1','shop'],['lh','2','shop']],rt:[['lu','xx'],['xx','st']],c:'#8e44ad'},
+ {n:'自由行',pts:[['lu','午','lunch'],['xe','A','free'],['kt','B','free'],['ra','C','free'],['st','車','alt']],rt:[['lu','xe'],['xe','kt']],c:'#27ae60',dash:'6 6'},
+ {n:'備案（湖南小館）',pts:[['st','1'],['ym','3'],['hn','4','lunch'],['ld','5'],['xx','6','shop']],rt:[['ym','hn'],['hn','ld'],['ld','xx'],['xx','st']],c:'#c0392b'}
 ];
 try{
  var map=L.map('map',{scrollWheelZoom:false});
  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(map);
- var G={base:L.layerGroup().addTo(map),A:L.layerGroup().addTo(map),B:L.layerGroup().addTo(map),S:L.layerGroup().addTo(map),F:L.layerGroup().addTo(map)};
- var SHORT={'基隆車站':'車站','海洋廣場':'海洋廣場','陽明海洋文化藝術館':'陽明館','湖南小館（午餐）':'湖南小館','麗都蝶客花園':'麗都','新新牛軋糖（愛一路27號）':'新新牛軋糖','李鵠餅店（仁三路90號）':'李鵠餅店','信二防空洞':'信二防空洞','基隆塔':'基隆塔','廟口夜市一帶（位置示意）':'廟口夜市','仁愛市場':'仁愛市場'};
- var OFF={'基隆車站':[-62,0],'海洋廣場':[28,34],'陽明海洋文化藝術館':[-60,-34],'湖南小館（午餐）':[30,-58],'麗都蝶客花園':[-40,-48],'新新牛軋糖（愛一路27號）':[-70,26],'李鵠餅店（仁三路90號）':[34,46],'信二防空洞':[62,18],'基隆塔':[72,-4],'廟口夜市一帶（位置示意）':[56,-4],'仁愛市場':[-60,56]};
- function pin(p,cls,label,g){
-  var o=OFF[p.name]||[40,-30],nm=SHORT[p.name]||p.name;
-  var h='<div style="position:relative;width:24px;height:24px"><svg style="position:absolute;left:12px;top:12px;overflow:visible;width:1px;height:1px"><line x1="0" y1="0" x2="'+o[0]+'" y2="'+o[1]+'" stroke="#444" stroke-width="1.2"/></svg>'
-   +'<div class="lbl" style="left:'+(12+o[0])+'px;top:'+(12+o[1])+'px">'+nm+'</div><div class="pin '+cls+'" style="position:relative">'+label+'</div></div>';
-  L.marker(p.ll,{icon:L.divIcon({className:'',html:h,iconSize:[24,24],iconAnchor:[12,12]})})
-   .addTo(g).bindPopup('<b>'+p.name+'</b><br>'+p.t+(p.u?'<br><a href="'+p.u+'" target="_blank" rel="noopener">景點介紹 ›</a>':''));
+ var layer=null,tb=document.getElementById('tabs');
+ function pin(k,label,cls,g){
+  var p=PT[k],o=p.off;
+  var h='<div style="position:relative;width:24px;height:24px"><svg style="position:absolute;left:12px;top:12px;overflow:visible;width:1px;height:1px"><line x1="0" y1="0" x2="'+o[0]+'" y2="'+o[1]+'" stroke="#444" stroke-width="1.2"/></svg><div class="lbl" style="left:'+(12+o[0])+'px;top:'+(12+o[1])+'px">'+p.name+'</div><div class="pin '+(cls||'')+'" style="position:relative">'+label+'</div></div>';
+  L.marker(p.ll,{icon:L.divIcon({className:'',html:h,iconSize:[24,24],iconAnchor:[12,12]})}).addTo(g)
+   .bindPopup('<b>'+p.name+'</b>'+(p.u?'<br><a href="'+p.u+'" target="_blank" rel="noopener">景點介紹 ›</a>':''));
  }
- P.forEach(function(p){pin(p,p.lunch?'lunch':(p.shop?'shop':''),p.n,p.n<=3?G.base:(p.shop?G.S:G.A))});
- F.forEach(function(p,i){pin(p,'free','ABCD'.charAt(i),G.F)});
- var C=F[2],XA=F[0],XB=F[1];
- var all=P.concat(F).map(function(p){return p.ll});
- map.fitBounds(L.latLngBounds(all).pad(0.15));
- function route(a,b,color,g,dash){
+ function route(a,b,c,dash,g){
   fetch('https://router.project-osrm.org/route/v1/foot/'+a[1]+','+a[0]+';'+b[1]+','+b[0]+'?overview=full&geometries=geojson')
    .then(function(r){return r.json()}).then(function(d){
-    if(d&&d.routes&&d.routes[0]){L.geoJSON(d.routes[0].geometry,{style:{color:color,weight:4,opacity:.8,dashArray:dash||null}}).addTo(g)}
-   }).catch(function(){});
+    if(d&&d.routes&&d.routes[0])L.geoJSON(d.routes[0].geometry,{style:{color:c,weight:4,opacity:.8,dashArray:dash||null}}).addTo(g)}).catch(function(){});
  }
- route(P[0].ll,P[1].ll,'#1d3557',G.base);route(P[1].ll,P[2].ll,'#1d3557',G.base);route(P[5].ll,P[0].ll,'#1d3557',G.base);
- route(P[2].ll,P[3].ll,'#c0392b',G.A);route(P[3].ll,P[4].ll,'#c0392b',G.A);route(P[4].ll,P[5].ll,'#c0392b',G.A);
- route(P[2].ll,C.ll,'#2471a3',G.B);route(C.ll,P[5].ll,'#2471a3',G.B);
- route(C.ll,XA.ll,'#27ae60',G.F,'6 6');route(XA.ll,XB.ll,'#27ae60',G.F,'6 6');
- [['cA','A'],['cB','B'],['cS','S'],['cF','F']].forEach(function(x){
-  document.getElementById(x[0]).onchange=function(){this.checked?G[x[1]].addTo(map):map.removeLayer(G[x[1]])}});
+ function show(i){
+  var T=TABS[i];if(layer)map.removeLayer(layer);layer=L.layerGroup().addTo(map);
+  T.rt.forEach(function(r){route(PT[r[0]].ll,PT[r[1]].ll,T.c,T.dash,layer)});
+  T.pts.forEach(function(q){pin(q[0],q[1],q[2],layer)});
+  map.fitBounds(L.latLngBounds(T.pts.map(function(q){return PT[q[0]].ll})).pad(0.35));
+  [].forEach.call(tb.children,function(b,j){b.className=j==i?'on':''});
+  for(var j=0;j<TABS.length;j++)document.getElementById('t'+j).className='tab'+(j==i?' on':'');
+ }
+ TABS.forEach(function(T,i){var b=document.createElement('button');b.textContent=T.n;b.onclick=function(){show(i)};tb.appendChild(b)});
+ show(0);
 }catch(e){document.getElementById('map').innerHTML='<p style="padding:12px">地圖無法載入，請看下方表格或用「在 Google 地圖開啟」。</p>'}
 </script></body></html>
