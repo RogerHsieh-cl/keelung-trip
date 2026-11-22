@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>基隆一日遊｜路線地圖</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+:root{--navy:#1d3557;--red:#c0392b;--bg:#faf7f0;--line:#ddd6c5}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:#222;font:16px/1.6 -apple-system,"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif}
+header{background:var(--navy);color:#fff;padding:14px 16px}header h1{margin:0;font-size:20px}header p{margin:2px 0 0;font-size:14px;opacity:.9}
+.wrap{max-width:780px;margin:0 auto;padding:0 12px 40px}
+#map{height:420px;border-radius:12px;margin:12px 0;border:1px solid var(--line)}
+h2{font-size:18px;color:var(--navy);margin:20px 0 6px}
+table{width:100%;border-collapse:collapse;background:#fff;font-size:14px}th,td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}th{background:#ece8dc}
+.pin{background:var(--navy);color:#fff;border:2px solid #fff;border-radius:50%;width:28px;height:28px;line-height:24px;text-align:center;font-weight:700;box-shadow:0 1px 4px #0006}
+.pin.lunch{background:var(--red)}
+.key{background:#fff3b0;border-radius:8px;padding:6px 10px;font-weight:700;margin:8px 0}
+.note{font-size:13px;color:#666}
+a{color:var(--navy)}
+.far{background:#ffe9e5}
+</style></head><body>
+<header><h1>基隆一日遊｜路線地圖</h1><p>各景點相對位置與步行距離（步行距離與時間為 Google 地圖查詢結果）</p></header>
+<div class="wrap">
+<div class="key">最長的兩段：陽明館→午餐 約 1.0 km（14 分）、麗都→車站 約 900 m（13 分）。午餐店和麗都只隔 170 m。</div>
+<div id="map"></div>
+<p class="note">地圖上的虛線是直線連接，只表示相對位置；實際步行路線請看下表。①車站位置為示意。</p>
+
+<h2>每一段多遠</h2>
+<table>
+<tr><th>路段</th><th>步行距離</th><th>時間</th></tr>
+<tr><td>① 基隆車站 → ② 海洋廣場</td><td>240 m</td><td>3 分</td></tr>
+<tr><td>② 海洋廣場 → ③ 陽明館</td><td>270 m</td><td>4 分</td></tr>
+<tr class="far"><td>③ 陽明館 → ④ 湖南小館（午餐）</td><td>約 1.0 km</td><td>14 分</td></tr>
+<tr><td>④ 湖南小館 → ⑤ 麗都蝶客花園</td><td>170 m</td><td>2 分</td></tr>
+<tr class="far"><td>⑤ 麗都蝶客花園 → ① 基隆車站</td><td>約 900 m</td><td>13 分</td></tr>
+<tr><td>（直接）基隆車站 → 陽明館</td><td>200 m</td><td>3 分</td></tr>
+<tr><td>（直接）基隆車站 → 湖南小館</td><td>約 1.0 km</td><td>14 分</td></tr></table>
+<p class="note">全程步行約 2.6 km。Google 標示這幾段「多為平坦路段」。時間是一般成人步行，長輩與小孩請抓 1.5 倍。</p>
+
+<h2>建議</h2>
+<ul>
+<li>陽明館 11:30 就要出發，才能 11:45 到午餐。</li>
+<li>兩段較長的路（陽明館→午餐、麗都→車站）可讓走不動的長輩搭計程車。</li>
+<li>麗都 14:20 就要出發，14:54 才趕得上車。</li></ul>
+
+<h2>各段在 Google 地圖開啟</h2>
+<ul>
+<li><a href="https://www.google.com/maps/dir/?api=1&origin=基隆車站&destination=基隆海洋廣場&travelmode=walking" target="_blank" rel="noopener">車站 → 海洋廣場</a></li>
+<li><a href="https://www.google.com/maps/dir/?api=1&origin=基隆海洋廣場&destination=陽明海洋文化藝術館&travelmode=walking" target="_blank" rel="noopener">海洋廣場 → 陽明館</a></li>
+<li><a href="https://www.google.com/maps/dir/?api=1&origin=陽明海洋文化藝術館&destination=基隆市中正區義一路68號湖南小館&travelmode=walking" target="_blank" rel="noopener">陽明館 → 湖南小館</a></li>
+<li><a href="https://www.google.com/maps/dir/?api=1&origin=基隆市中正區義一路68號湖南小館&destination=麗都蝶客花園&travelmode=walking" target="_blank" rel="noopener">湖南小館 → 麗都</a></li>
+<li><a href="https://www.google.com/maps/dir/?api=1&origin=麗都蝶客花園&destination=基隆車站&travelmode=walking" target="_blank" rel="noopener">麗都 → 車站</a></li></ul>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+var P=[
+ {n:1,name:'基隆車站',t:'8:45 集合／14:54 回程',ll:[25.1314,121.7399]},
+ {n:2,name:'海洋廣場',t:'9:55 看海、拍照、廁所',ll:[25.1309627,121.7413639]},
+ {n:3,name:'陽明海洋文化藝術館',t:'10:15–11:30',ll:[25.1326261,121.7399987]},
+ {n:4,name:'湖南小館（午餐）',t:'11:45 最大集合點',ll:[25.1331869,121.7460471],lunch:1},
+ {n:5,name:'麗都蝶客花園',t:'13:00 看海、團體照',ll:[25.1341923,121.744855]}
+];
+try{
+ var map=L.map('map',{scrollWheelZoom:false});
+ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(map);
+ var pts=P.map(function(p){return p.ll});
+ L.polyline(pts.concat([pts[0]]),{color:'#c0392b',weight:3,dashArray:'6 6'}).addTo(map);
+ P.forEach(function(p){
+  L.marker(p.ll,{icon:L.divIcon({className:'',html:'<div class="pin'+(p.lunch?' lunch':'')+'">'+p.n+'</div>',iconSize:[28,28],iconAnchor:[14,14]})})
+   .addTo(map).bindPopup('<b>'+p.n+' '+p.name+'</b><br>'+p.t);
+  L.tooltip({permanent:true,direction:'top',offset:[0,-14]}).setContent(p.name).setLatLng(p.ll).addTo(map);
+ });
+ map.fitBounds(L.latLngBounds(pts).pad(0.25));
+}catch(e){document.getElementById('map').innerHTML='<p style="padding:12px">地圖無法載入，請看下方表格或用「在 Google 地圖開啟」。</p>'}
+</script></body></html>
