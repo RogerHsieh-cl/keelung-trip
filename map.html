@@ -10,7 +10,7 @@ header{background:var(--navy);color:#fff;padding:14px 16px}header h1{margin:0;fo
 #map{height:420px;border-radius:12px;margin:12px 0;border:1px solid var(--line)}
 h2{font-size:18px;color:var(--navy);margin:20px 0 6px}
 table{width:100%;border-collapse:collapse;background:#fff;font-size:14px}th,td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}th{background:#ece8dc}
-.pin{background:var(--navy);color:#fff;border:2px solid #fff;border-radius:50%;width:28px;height:28px;line-height:24px;text-align:center;font-weight:700;box-shadow:0 1px 4px #0006}
+.pin{background:var(--navy);color:#fff;border:2px solid #fff;border-radius:50%;width:24px;height:24px;line-height:20px;font-size:13px;text-align:center;font-weight:700;box-shadow:0 1px 4px #0006}
 .pin.lunch{background:var(--red)}
 .key{background:#fff3b0;border-radius:8px;padding:6px 10px;font-weight:700;margin:8px 0}
 .note{font-size:13px;color:#666}
@@ -24,7 +24,10 @@ a{color:var(--navy)}
 <div class="key">最長的兩段：陽明館→午餐 約 1.0 km（14 分）、麗都→愛一路 700 m（10 分）。午餐店和麗都只隔 170 m。回程順路買伴手禮。</div>
 <div class="legend"><span><i style="background:#1d3557"></i>主行程</span><span><i style="background:#c0392b"></i>午餐</span><span><i style="background:#8e44ad"></i>伴手禮</span><span><i style="background:#27ae60"></i>自由行景點</span></div>
 <div id="map"></div>
-<p class="note">港口不能直接穿過，所以<b>距離全部用 Google 步行路線</b>（沿港口繞行），不是直線。地圖上的線是依道路畫的示意，載入失敗時就只顯示標記。①車站、廟口位置為示意。</p>
+<table><tr><th>編號</th><th>地點</th></tr>
+<tr><td>1</td><td>基隆車站</td></tr><tr><td>2</td><td>海洋廣場</td></tr><tr><td>3</td><td>陽明海洋文化藝術館</td></tr><tr><td>4</td><td>湖南小館（午餐，待改）</td></tr><tr><td>5</td><td>麗都蝶客花園</td></tr><tr><td>6</td><td>新新牛軋糖（愛一路）</td></tr><tr><td>7</td><td>李鵠餅店（仁三路）</td></tr>
+<tr><td>A</td><td>信二防空洞（自由行）</td></tr><tr><td>B</td><td>基隆塔（自由行）</td></tr><tr><td>C</td><td>廟口夜市一帶（自由行）</td></tr></table>
+<p class="note">點地圖上的標記可看說明和介紹連結。港口不能直接穿過，所以<b>距離全部用 Google 步行路線</b>（沿港口繞行），不是直線。地圖上的線是依道路畫的示意，載入失敗時就只顯示標記。①車站、廟口位置為示意。</p>
 
 <h2>每一段多遠</h2>
 <table>
@@ -38,6 +41,9 @@ a{color:var(--navy)}
 <tr><td>⑥ 新新牛軋糖 → ① 基隆車站</td><td>400 m</td><td>6 分</td></tr>
 <tr><td>⑥ 新新牛軋糖 ↔ ⑦ 李鵠餅店（仁三路）</td><td>約 40 m 之內（同一帶）</td><td>1 分</td></tr>
 <tr><td>（自由行）湖南小館 → 基隆塔</td><td>170 m（Google 標示平坦；塔本身在山坡上，請現場確認）</td><td>3 分</td></tr>
+<tr><td>（自由行）廟口一帶 → 信二防空洞</td><td>350 m</td><td>5 分</td></tr>
+<tr><td>（自由行）信二防空洞 → 基隆塔</td><td>300 m</td><td>4 分</td></tr>
+<tr><td>（自由行）車站 → 信二防空洞</td><td>800 m</td><td>12 分</td></tr>
 <tr><td>（自由行）麗都 → 廟口一帶</td><td>約 700 m</td><td>11 分</td></tr>
 <tr><td>（自由行）車站 → 仁愛市場</td><td>550 m</td><td>8 分</td></tr>
 <tr><td>（直接）基隆車站 → 陽明館</td><td>200 m</td><td>3 分</td></tr>
@@ -71,6 +77,7 @@ var P=[
  {n:7,name:'李鵠餅店（仁三路90號）',t:'蛋黃酥、鳳梨酥；與新新同一帶',u:'https://gofunit.com/%E5%9F%BA%E9%9A%86%E5%90%8D%E7%94%A2/',ll:[25.1292581,121.7418618],shop:1}
 ];
 var F=[
+ {name:'信二防空洞',t:'自由行：離廟口 350 m（5 分）、離基隆塔 300 m（4 分）、離車站 800 m（12 分）',u:'https://www.bella.tw/articles/travel&foodies/46569',ll:[25.1312366,121.7461065]},
  {name:'基隆塔',t:'自由行：離湖南小館 170 m；塔在山坡，請量力',u:'https://supertaste.tvbs.com.tw/travel/348884',ll:[25.1328033,121.7470181]},
  {name:'廟口夜市一帶（位置示意）',t:'自由行：離麗都約 700 m，小吃、金興蔴粩、泉利米香',u:'https://bunnyann.tw/?p=575',ll:[25.1290247,121.7440256]},
  {name:'仁愛市場',t:'自由行：離車站 550 m',u:'https://www.bella.tw/articles/travel&foodies/42695',ll:[25.128054,121.741071]}
@@ -79,12 +86,12 @@ try{
  var map=L.map('map',{scrollWheelZoom:false});
  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(map);
  function pin(p,cls,label){
-  L.marker(p.ll,{icon:L.divIcon({className:'',html:'<div class="pin '+cls+'">'+label+'</div>',iconSize:[28,28],iconAnchor:[14,14]})})
+  L.marker(p.ll,{icon:L.divIcon({className:'',html:'<div class="pin '+cls+'">'+label+'</div>',iconSize:[24,24],iconAnchor:[12,12]})})
    .addTo(map).bindPopup('<b>'+p.name+'</b><br>'+p.t+(p.u?'<br><a href="'+p.u+'" target="_blank" rel="noopener">景點介紹 ›</a>':''));
-  L.tooltip({permanent:true,direction:'top',offset:[0,-14]}).setContent(p.name.replace(/（.*/,'')).setLatLng(p.ll).addTo(map);
+  
  }
  P.forEach(function(p){pin(p,p.lunch?'lunch':(p.shop?'shop':''),p.n)});
- F.forEach(function(p){pin(p,'free','★')});
+ F.forEach(function(p,i){pin(p,'free','ABC'.charAt(i))});
  var all=P.concat(F).map(function(p){return p.ll});
  map.fitBounds(L.latLngBounds(all).pad(0.2));
  // 依道路畫路線（OSRM 公開服務），失敗就略過
